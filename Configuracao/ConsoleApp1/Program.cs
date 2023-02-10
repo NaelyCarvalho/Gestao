@@ -1,7 +1,12 @@
-﻿internal class Program
+﻿namespace ConsoleAppPrincipal
 {
-    private static void Main(string[] args)
+    internal class Program
     {
-        Console.WriteLine("Hello, World!");
+        private static void Main(string[] args)
+        {
+
+         
+            
+        }
     }
 }
