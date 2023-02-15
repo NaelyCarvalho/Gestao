@@ -1,5 +1,6 @@
 ﻿using Models;
 using System.Data.SqlClient;
+using System.Runtime.ConstrainedExecution;
 
 namespace DAL
 {
@@ -50,6 +51,11 @@ namespace DAL
         public void Excluir(int _id)
         {
 
+        }
+
+        public void Exibir(Usuario _Nome)
+        {
+            Console.WriteLine("Nome: " + _Nome);
         }
 
     }

@@ -25,7 +25,7 @@ namespace BLL
             //Todo: Validar se a senha não é 1234
             if (_usuario.Senha.Contains("1234567"))
             {
-                throw new Exception("Senha não permitida, números em sequência.");
+                throw new Exception("Não é permitido números em sequência.");
             }
 
             //Todo: Validar se já existe um usuário com este nome.
@@ -47,7 +47,11 @@ namespace BLL
 
         public void Excluir(int _id)
         {
+        }
 
+        public void Exibir(Usuario _Nome)
+        {
+            Console.WriteLine("Nome: " + _Nome);
         }
     }
 }
