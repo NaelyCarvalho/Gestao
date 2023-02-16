@@ -49,9 +49,6 @@ namespace BLL
         {
         }
 
-        public void Exibir(Usuario _Nome)
-        {
-            Console.WriteLine("Nome: " + _Nome);
-        }
+
     }
 }
