@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    internal class PermissaoDAL
+    public class PermissaoDAL
     {
         public void Inserir(Permissao _permissao)
         {
@@ -42,12 +42,49 @@ namespace DAL
 
         public void ALterar(Permissao _permissao)
         {
+            SqlConnection cn = new SqlConnection();
 
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"uptade Permissao set Descricao = @Descricao where IdDescricao = @IdDescricao ";
+
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Descricao", _permissao.Descricao);
+                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.IdDescricao);
+
+                cn.Open();
+                cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar alterar a permissao no banco de dados: " + ex.Message);
+            }
         }
 
-        public void Excluir(int _idDescricao)
+        public void Excluir(Permissao _permissao)
         {
+            SqlConnection cn = new SqlConnection();
 
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"delete from Permissao where IdDescricao = @IdDescricao";
+
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.IdDescricao);
+
+                cn.Open();
+                cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar excluir a permissao no banco de dados: " + ex.Message);
+            }
         }
     }
 }

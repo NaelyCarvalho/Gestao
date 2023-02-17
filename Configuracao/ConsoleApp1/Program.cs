@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using Models;
 
 namespace ConsoleAppPrincipal
@@ -11,31 +12,14 @@ namespace ConsoleAppPrincipal
 
             try
             {
-                string opcao;
-                Usuario usuario = new Usuario();
-                UsuarioBLL usuarioBLL = new UsuarioBLL();
+                Permissao permissao = new Permissao();
+                PermissaoBLL permissaoBLL = new PermissaoBLL();
                 do
                 {
-                    Console.WriteLine("Nome: ");
-                    usuario.Nome = Console.ReadLine();
+                    Console.WriteLine("Descrição: ");
+                    permissao.Descricao = Console.ReadLine();
 
-                    Console.WriteLine("Nome de Usuario: ");
-                    usuario.NomeUsuario = Console.ReadLine();
-
-                    Console.WriteLine("Email: ");
-                    usuario.Email = Console.ReadLine();
-
-                    Console.WriteLine("CPF: ");
-                    usuario.CPF = Console.ReadLine();
-
-                    Console.WriteLine("Senha: ");
-                    usuario.Senha = Console.ReadLine();
-
-                    Console.WriteLine("O usuário estará ativo (S) para sim ou (N) para não : ");
-                    usuario.Ativo = Console.ReadLine().ToUpper() == "S";
-
-                    usuarioBLL.Inserir(usuario);
-
+                    permissaoBLL.Inserir(permissao);
 
                     Console.WriteLine("Deseja adicionar mais um usuário: Digite (1) para SIM e (2) para NÃO.");
                     questao = Convert.ToInt32(Console.ReadLine());
@@ -46,7 +30,7 @@ namespace ConsoleAppPrincipal
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
+            }  
 
         }
     }

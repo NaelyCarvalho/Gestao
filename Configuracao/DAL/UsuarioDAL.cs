@@ -1,8 +1,6 @@
 ﻿
 using Models;
-
 using System.Data.SqlClient;
-
 
 namespace DAL
 {
