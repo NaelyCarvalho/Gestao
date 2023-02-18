@@ -29,11 +29,13 @@ namespace BLL
             }
 
             PermissaoDAL permissaoDAL = new PermissaoDAL();
-            permissaoDAL.ALterar(_permissao);
+            permissaoDAL.Alterar(_permissao);
         }
 
-        public void Excluir(Permissao _permissao)
+        public void Excluir(int _IdDescricao)
         {
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            permissaoDAL.Excluir(_IdDescricao);
         }
     }
 }

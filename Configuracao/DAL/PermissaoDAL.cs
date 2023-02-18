@@ -35,12 +35,14 @@ namespace DAL
             }
         }
 
+
         public Permissao Buscar(int _idDescricao)
         {
             return new Permissao();
         }
 
-        public void ALterar(Permissao _permissao)
+        
+        public void Alterar(Permissao _permissao)
         {
             SqlConnection cn = new SqlConnection();
 
@@ -49,7 +51,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"uptade Permissao set Descricao = @Descricao where IdDescricao = @IdDescricao ";
+                cmd.CommandText = @"update Permissao set Descricao = @Descricao where IdDescricao = @IdDescricao ";
 
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Descricao", _permissao.Descricao);
@@ -64,7 +66,8 @@ namespace DAL
             }
         }
 
-        public void Excluir(Permissao _permissao)
+
+        public void Excluir(int _IdDescricao)
         {
             SqlConnection cn = new SqlConnection();
 
@@ -76,10 +79,10 @@ namespace DAL
                 cmd.CommandText = @"delete from Permissao where IdDescricao = @IdDescricao";
 
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.IdDescricao);
+                cmd.Parameters.AddWithValue("@IdDescricao", _IdDescricao);
 
                 cn.Open();
-                cmd.ExecuteScalar();
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

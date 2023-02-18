@@ -6,31 +6,23 @@ namespace ConsoleAppPrincipal
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            int questao;
-
             try
             {
-                Permissao permissao = new Permissao();
-                PermissaoBLL permissaoBLL = new PermissaoBLL();
-                do
-                {
-                    Console.WriteLine("Descrição: ");
-                    permissao.Descricao = Console.ReadLine();
+                GrupoUsuario grupoUsuario = new GrupoUsuario();
+                GrupoUsuarioBLL grupoUsuarioBLL = new GrupoUsuarioBLL();
 
-                    permissaoBLL.Inserir(permissao);
+                Console.WriteLine("Digite o IdDescrição da linha que quer excluir: ");
+                grupoUsuario.IdGrupoUsuario = Convert.ToInt32(Console.ReadLine());
 
-                    Console.WriteLine("Deseja adicionar mais um usuário: Digite (1) para SIM e (2) para NÃO.");
-                    questao = Convert.ToInt32(Console.ReadLine());
-
-                } while (questao == 1);
+                grupoUsuarioBLL.Excluir(grupoUsuario.IdGrupoUsuario);
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }  
+            }
 
         }
     }
