@@ -39,10 +39,6 @@ namespace DAL
             }
         }
 
-        public Usuario Buscar(string _NomeUSuario)
-        {
-            return new Usuario();
-        }
         public void ALterar(Usuario _usuario)
         {
 
@@ -53,5 +49,47 @@ namespace DAL
 
         }
 
+        public List<Usuario> BuscarTodos()
+        {
+            SqlConnection cn = new SqlConnection();
+            Usuario usuario;
+            List<Usuario> usuarios = new List<Usuario>();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id, Nome, NomeUsuario, CPF, Ativo from Usuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cn.Open();
+
+                using(SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.Id = Convert.ToInt32(rd["ID"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["Nome"].ToString();
+                        usuario.CPF = rd["CPF"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+
+                        usuarios.Add(usuario);
+                    }
+                }
+                return usuarios;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception ("Ocorreu um erro ao tentar buscar todos os usuários: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
     }
 }
+

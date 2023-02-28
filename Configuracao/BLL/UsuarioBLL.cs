@@ -34,12 +34,6 @@ namespace BLL
             usuarioDAL.Inserir(_usuario);
         }
 
-
-        public Usuario Buscar(string _nomeUsuario)
-        {
-            return new Usuario();
-        }
-
         public void Alterar(Usuario _usuario)
         {
             //Todo: Validar se a senha é maior que 50 ou menor que 3 e se contém espaço
@@ -73,5 +67,10 @@ namespace BLL
         {
         }
 
+        public List<Usuario> BuscarTodos()
+        {
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarTodos();
+        }
     }
 }
