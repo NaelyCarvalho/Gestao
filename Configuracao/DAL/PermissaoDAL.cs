@@ -34,13 +34,6 @@ namespace DAL
                 cn.Close();
             }
         }
-
-
-        public Permissao Buscar(int _idDescricao)
-        {
-            return new Permissao();
-        }
-
         
         public void Alterar(Permissao _permissao)
         {
@@ -89,5 +82,11 @@ namespace DAL
                 throw new Exception("Ocorreu um erro ao tentar excluir a permissao no banco de dados: " + ex.Message);
             }
         }
+
+        public Permissao Buscar(int _idDescricao)
+        {
+            return new Permissao();
+        }
+
     }
 }

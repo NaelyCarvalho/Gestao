@@ -34,12 +34,6 @@ namespace DAL
             }
         }
 
-        public GrupoUsuario Buscar(int _IdGrupoUsuario)
-        {
-            return new GrupoUsuario();
-        }
-
-
         public void ALterar(GrupoUsuario _grupoUsuario)
         {
             SqlConnection cn = new SqlConnection();
@@ -86,6 +80,12 @@ namespace DAL
                 throw new Exception("Ocorreu um erro ao tentar excluir a permissao no banco de dados: " + ex.Message);
             }
         }
+
+        public GrupoUsuario Buscar(int _IdGrupoUsuario)
+        {
+            return new GrupoUsuario();
+        }
+
 
     }
 }
