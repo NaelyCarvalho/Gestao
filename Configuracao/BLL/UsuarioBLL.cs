@@ -28,6 +28,7 @@ namespace BLL
                 throw new Exception("Não é permitido números em sequência.");
             }
         }
+
         public void Inserir(Usuario _usuario)
         {
 

@@ -39,7 +39,7 @@ namespace DAL
             }
         }
 
-        public void ALterar(Usuario _usuario)
+        public void Alterar(Usuario _usuario)
         {
             SqlConnection cn = new SqlConnection();
 
