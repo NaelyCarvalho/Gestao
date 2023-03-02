@@ -1,5 +1,7 @@
 ﻿using Models;
 using DAL;
+using System.Security.Cryptography;
+using System;
 
 namespace BLL
 {
@@ -14,11 +16,6 @@ namespace BLL
 
             PermissaoDAL permissaoDAL = new PermissaoDAL();
             permissaoDAL.Inserir(_permissao);
-        }
-
-        public PermissaoBLL Buscar(string _nomeUsuario)
-        {
-            return new PermissaoBLL();
         }
 
         public void Alterar(Permissao _permissao)
@@ -36,6 +33,12 @@ namespace BLL
         {
             PermissaoDAL permissaoDAL = new PermissaoDAL();
             permissaoDAL.Excluir(_IdDescricao);
+        }
+
+        public Permissao BuscarPorId(int _IdDescricao)
+        {
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            return permissaoDAL.BuscarPorId(_IdDescricao);
         }
     }
 }

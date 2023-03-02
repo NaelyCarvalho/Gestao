@@ -1,5 +1,7 @@
 ﻿using Models;
 using DAL;
+using System.Collections.Generic;
+using System;
 
 namespace BLL
 {
@@ -11,10 +13,10 @@ namespace BLL
             if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
             {
                 throw new Exception("O nome de usuário deve ter entre 3 e 50 caracteres.");
-                if (_usuario.NomeUsuario.Contains(" "))
-                {
-                    throw new Exception("O nome de usuário não pode conter espaços.");
-                }
+            }
+            if (_usuario.NomeUsuario.Contains(" "))
+            {
+                throw new Exception("O nome de usuário não pode conter espaços.");
             }
             //Todo: Validar se a senha é maior que 11 ou menor que 7
             if (_usuario.Senha.Length < 7 || _usuario.Senha.Length > 11)

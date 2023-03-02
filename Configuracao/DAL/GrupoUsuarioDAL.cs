@@ -1,4 +1,5 @@
 ﻿using Models;
+using System;
 using System.Data.SqlClient;
 
 namespace DAL
@@ -81,9 +82,42 @@ namespace DAL
             }
         }
 
-        public GrupoUsuario Buscar(int _IdGrupoUsuario)
+        public GrupoUsuario Buscar(GrupoUsuario _grupoUsuario)
         {
-            return new GrupoUsuario();
+            GrupoUsuario grupo = new GrupoUsuario();
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"Select TOP 100 IdGrupoUsuario, NomeGrupo from GrupoUsuario where IdGrupoUsuario = @IdGrupoUsuario";
+
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _grupoUsuario.IdGrupoUsuario);
+
+                cn.Open();
+
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        grupo = new GrupoUsuario();
+                        grupo.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
+                        grupo.NomeGrupo = rd["NomeGrupo"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar grupo" +ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return grupo;
         }
 
 

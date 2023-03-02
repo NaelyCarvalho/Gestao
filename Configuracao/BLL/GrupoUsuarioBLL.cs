@@ -1,5 +1,6 @@
 ﻿using Models;
 using DAL;
+using System;
 
 namespace BLL
 {
@@ -27,15 +28,16 @@ namespace BLL
             grupoUsuarioDAL.ALterar(_GrupoUsuario);
         }
 
-        public GrupoUsuario Buscar(int _IdGrupoUsuario)
-        {
-            return new GrupoUsuario();
-        }
-
         public void Excluir(int _IdGrupoUsuario)
         {
             GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
             grupoUsuarioDAL.Excluir(_IdGrupoUsuario);
+        }
+        public GrupoUsuario BuscarGrupoUsuario(GrupoUsuario _grupoUsuario)
+        {
+            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+            grupoUsuarioDAL.Buscar(_grupoUsuario);
+            return grupoUsuarioDAL.Buscar(_grupoUsuario);
         }
     }
 }

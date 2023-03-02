@@ -1,6 +1,8 @@
 ﻿
 using Models;
+using System;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace DAL
 {
@@ -83,10 +85,43 @@ namespace DAL
             }
         }
 
-        public Permissao Buscar(int _idDescricao)
+        public Permissao BuscarPorId(int _IdDescricao)
         {
-            return new Permissao();
+            Permissao permissao = new Permissao();
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT TOP 100 IdDescricao, Descricao FROM Permissao WHERE IdDescricao = @IdDescricao";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdDescricao", _IdDescricao);
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        permissao = new Permissao();
+                        permissao.IdDescricao = Convert.ToInt32(rd["IdDescricao"]);
+                        permissao.Descricao = rd["Descricao"].ToString();
+                    }
+                }
+                //cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar buscar uma permissão no banco: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return permissao;
         }
+    }
 
     }
-}
+
