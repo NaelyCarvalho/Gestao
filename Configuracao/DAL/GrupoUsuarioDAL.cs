@@ -1,5 +1,6 @@
 ﻿using Models;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace DAL
@@ -82,7 +83,7 @@ namespace DAL
             }
         }
 
-        public GrupoUsuario Buscar(GrupoUsuario _grupoUsuario)
+        public GrupoUsuario BuscarPorID(int _idGrupoUsuario)
         {
             GrupoUsuario grupo = new GrupoUsuario();
             SqlConnection cn = new SqlConnection();
@@ -95,7 +96,7 @@ namespace DAL
                 cmd.CommandText = @"Select TOP 100 IdGrupoUsuario, NomeGrupo from GrupoUsuario where IdGrupoUsuario = @IdGrupoUsuario";
 
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _grupoUsuario.IdGrupoUsuario);
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _idGrupoUsuario);
 
                 cn.Open();
 
@@ -118,6 +119,46 @@ namespace DAL
                 cn.Close();
             }
             return grupo;
+        }
+
+        public List<Permissao> BuscarTodosGrupoUsuario()
+        {
+            List<Permissao> grupos = new List<Permissao>();
+            GrupoUsuario grupoUsuario;
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+           
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT IdGrupoUsuario, NomeGrupo from GrupoUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cn.Open();
+
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        grupoUsuario = new GrupoUsuario();
+                        grupoUsuario.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
+                        grupoUsuario.NomeGrupo = rd["NomeGrupo"].ToString();
+
+                        BuscarTodosGrupoUsuario.Add(grupoUsuario);
+                    }
+                }
+                return grupoUsuario;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuários: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
 
 

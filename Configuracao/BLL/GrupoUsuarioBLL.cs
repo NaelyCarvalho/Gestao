@@ -33,11 +33,10 @@ namespace BLL
             GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
             grupoUsuarioDAL.Excluir(_IdGrupoUsuario);
         }
-        public GrupoUsuario BuscarGrupoUsuario(GrupoUsuario _grupoUsuario)
+        public GrupoUsuario BuscarPorID(int _idGrupoUsuario)
         {
             GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            grupoUsuarioDAL.Buscar(_grupoUsuario);
-            return grupoUsuarioDAL.Buscar(_grupoUsuario);
+            return grupoUsuarioDAL.BuscarPorID(_idGrupoUsuario);
         }
     }
 }
