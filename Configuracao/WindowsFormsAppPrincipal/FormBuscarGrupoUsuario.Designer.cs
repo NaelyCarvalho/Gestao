@@ -55,6 +55,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grupoUsuariosDataGridView.AutoGenerateColumns = false;
+            this.grupoUsuariosDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grupoUsuariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grupoUsuariosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -65,7 +66,7 @@
             this.grupoUsuariosDataGridView.ReadOnly = true;
             this.grupoUsuariosDataGridView.RowHeadersWidth = 51;
             this.grupoUsuariosDataGridView.RowTemplate.Height = 24;
-            this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(754, 358);
+            this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(742, 358);
             this.grupoUsuariosDataGridView.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
@@ -92,13 +93,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textboxgrupo.Location = new System.Drawing.Point(12, 46);
             this.textboxgrupo.Name = "textboxgrupo";
-            this.textboxgrupo.Size = new System.Drawing.Size(352, 22);
+            this.textboxgrupo.Size = new System.Drawing.Size(340, 22);
             this.textboxgrupo.TabIndex = 4;
             // 
             // buttonBuscarGrupo
             // 
             this.buttonBuscarGrupo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBuscarGrupo.Location = new System.Drawing.Point(370, 41);
+            this.buttonBuscarGrupo.Location = new System.Drawing.Point(358, 41);
             this.buttonBuscarGrupo.Name = "buttonBuscarGrupo";
             this.buttonBuscarGrupo.Size = new System.Drawing.Size(75, 33);
             this.buttonBuscarGrupo.TabIndex = 5;
@@ -109,7 +110,7 @@
             // buttonExcluirGrupo
             // 
             this.buttonExcluirGrupo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExcluirGrupo.Location = new System.Drawing.Point(687, 42);
+            this.buttonExcluirGrupo.Location = new System.Drawing.Point(675, 42);
             this.buttonExcluirGrupo.Name = "buttonExcluirGrupo";
             this.buttonExcluirGrupo.Size = new System.Drawing.Size(75, 32);
             this.buttonExcluirGrupo.TabIndex = 6;
@@ -119,7 +120,7 @@
             // buttonAdicionarGrupo
             // 
             this.buttonAdicionarGrupo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdicionarGrupo.Location = new System.Drawing.Point(606, 42);
+            this.buttonAdicionarGrupo.Location = new System.Drawing.Point(594, 42);
             this.buttonAdicionarGrupo.Name = "buttonAdicionarGrupo";
             this.buttonAdicionarGrupo.Size = new System.Drawing.Size(75, 32);
             this.buttonAdicionarGrupo.TabIndex = 7;
@@ -129,7 +130,7 @@
             // buttonAlterarGrupo
             // 
             this.buttonAlterarGrupo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAlterarGrupo.Location = new System.Drawing.Point(525, 41);
+            this.buttonAlterarGrupo.Location = new System.Drawing.Point(513, 41);
             this.buttonAlterarGrupo.Name = "buttonAlterarGrupo";
             this.buttonAlterarGrupo.Size = new System.Drawing.Size(75, 33);
             this.buttonAlterarGrupo.TabIndex = 8;
@@ -140,7 +141,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 472);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(766, 472);
             this.Controls.Add(this.buttonExcluirGrupo);
             this.Controls.Add(this.buttonAdicionarGrupo);
             this.Controls.Add(this.buttonAlterarGrupo);

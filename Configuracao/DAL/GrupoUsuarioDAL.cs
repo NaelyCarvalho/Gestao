@@ -121,19 +121,58 @@ namespace DAL
             return grupo;
         }
 
-        public List<Permissao> BuscarTodosGrupoUsuario()
+        public List<GrupoUsuario> BuscarPorIDUsuario(int _IdUsuario)
         {
-            List<Permissao> grupos = new List<Permissao>();
-            GrupoUsuario grupoUsuario;
             SqlConnection cn = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
-           
+            GrupoUsuario grupoUsuario;
+            List<GrupoUsuario> grupos = new List<GrupoUsuario>();
+            
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT GrupoUsuario.IdGrupoUsuario, GrupoUsuario.NomeGrupo From GrupoUsuario inner join UsuarioGrupoUsuario on GrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.Cod_GrupoUsuario where UsuarioGrupoUsuario.Cod_Usuario = @Cod_Usuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Cod_Usuario", _IdUsuario);
+                cn.Open();
+
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        grupoUsuario = new GrupoUsuario();
+                        grupoUsuario.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
+                        grupoUsuario.NomeGrupo = rd["NomeGrupo"].ToString();
+
+                        grupos.Add(grupoUsuario);
+                    }
+                }
+                return grupos;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuários: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public List<GrupoUsuario> BuscarTodos()
+        {
+            SqlConnection cn = new SqlConnection();
+            GrupoUsuario grupoUsuario;
+            List<GrupoUsuario> grupos = new List<GrupoUsuario>();
 
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT IdGrupoUsuario, NomeGrupo from GrupoUsuario";
+                cmd.CommandText = @"SELECT IdGrupoUsuario, NomeGrupo From GrupoUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
 
@@ -145,10 +184,10 @@ namespace DAL
                         grupoUsuario.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
                         grupoUsuario.NomeGrupo = rd["NomeGrupo"].ToString();
 
-                        BuscarTodosGrupoUsuario.Add(grupoUsuario);
+                        grupos.Add(grupoUsuario);
                     }
                 }
-                return grupoUsuario;
+                return grupos;
             }
             catch (Exception ex)
             {

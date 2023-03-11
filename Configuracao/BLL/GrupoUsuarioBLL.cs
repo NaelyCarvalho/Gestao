@@ -1,6 +1,7 @@
 ﻿using Models;
 using DAL;
 using System;
+using System.Collections.Generic;
 
 namespace BLL
 {
@@ -38,5 +39,7 @@ namespace BLL
             GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
             return grupoUsuarioDAL.BuscarPorID(_idGrupoUsuario);
         }
+
+       
     }
 }

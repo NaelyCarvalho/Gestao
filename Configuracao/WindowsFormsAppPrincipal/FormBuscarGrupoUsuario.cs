@@ -1,6 +1,7 @@
 ﻿using BLL;
 using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsAppPrincipal
 {
@@ -14,7 +15,15 @@ namespace WindowsFormsAppPrincipal
         private void buttonBuscarGrupo_Click_1(object sender, EventArgs e)
         {
             GrupoUsuarioBLL grupoUsuarioBLL = new GrupoUsuarioBLL();
-            grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BuscarPorID(Convert.ToInt32(textboxgrupo.Text));
+            if (textboxgrupo.Text == "")
+            {
+                //grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BFuscarTodos();
+            }
+            else
+            {
+                grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BuscarPorID(Convert.ToInt32(textboxgrupo.Text));
+            }
+
         }
 
     }

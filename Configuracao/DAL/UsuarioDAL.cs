@@ -112,7 +112,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT Id, Nome, NomeUsuario, CPF, Ativo from Usuario";
+                cmd.CommandText = "SELECT Id, Nome, NomeUsuario, Email, CPF, Ativo from Usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
 
@@ -123,10 +123,12 @@ namespace DAL
                         usuario = new Usuario();
                         usuario.Id = Convert.ToInt32(rd["ID"]);
                         usuario.Nome = rd["Nome"].ToString();
-                        usuario.NomeUsuario = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
+                        usuario.Email = rd["Email"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
-
+                        GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIDUsuario(usuario.Id);
                         usuarios.Add(usuario);
                     }
                 }
@@ -153,7 +155,7 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"Select ID, Nome, CPF, Email, Ativo
+                cmd.CommandText = @"Select ID, Nome, NomeUsuario, CPF, Email, Ativo
                                    From Usuario Where NomeUsuario = @NomeUsuario";
 
                 cmd.Parameters.AddWithValue("@NomeUsuario", _nomeUsuario);
@@ -166,8 +168,9 @@ namespace DAL
                         usuario = new Usuario();
                         usuario.Id = Convert.ToInt32(rd["Id"]);
                         usuario.Nome = rd["Nome"].ToString();
-                        usuario.NomeUsuario = rd["|NomeUsuario"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
+                        usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                     }
                     else
