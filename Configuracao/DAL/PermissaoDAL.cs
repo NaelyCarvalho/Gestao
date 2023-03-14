@@ -1,6 +1,7 @@
 ﻿
 using Models;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 
@@ -85,20 +86,23 @@ namespace DAL
             }
         }
 
-        public Permissao BuscarPorId(int _IdDescricao)
+
+        public List<Permissao> BuscarPorIDDescricao(int _IdDescricao)
         {
-            Permissao permissao = new Permissao();
             SqlConnection cn = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
+            Permissao permissao;
+            List<Permissao> permissoes = new List<Permissao>();
 
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT TOP 100 IdDescricao, Descricao FROM Permissao WHERE IdDescricao = @IdDescricao";
+                cmd.CommandText = @"SELECT Permissao.IdDescricao, Permissao.Descricao from Permissao inner join PermissaoGrupoUsuario on Permissao.IdDescricao = PermissaoGrupoUsuario.Cod_GrupoUsuario where Permissao.IdDescricao = @Cod_Descricao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _IdDescricao);
+                cmd.Parameters.AddWithValue("@Cod_Descricao", _IdDescricao);
                 cn.Open();
+
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
@@ -106,21 +110,22 @@ namespace DAL
                         permissao = new Permissao();
                         permissao.IdDescricao = Convert.ToInt32(rd["IdDescricao"]);
                         permissao.Descricao = rd["Descricao"].ToString();
+
+                        permissoes.Add(permissao);
                     }
                 }
-                //cmd.ExecuteScalar();
+                return permissoes;
             }
             catch (Exception ex)
             {
-
-                throw new Exception("Ocorreu um erro ao tentar buscar uma permissão no banco: " + ex.Message);
+                throw new Exception("Ocorreu um erro ao tentar buscar todos as permissões: " + ex.Message);
             }
             finally
             {
                 cn.Close();
             }
-            return permissao;
         }
+
     }
 
     }

@@ -40,6 +40,11 @@ namespace BLL
             return grupoUsuarioDAL.BuscarPorID(_idGrupoUsuario);
         }
 
-       
+        public List<GrupoUsuario> BuscarTodosGrupos()
+        {
+            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+            return grupoUsuarioDAL.BuscarTodosGrupos();
+        }
+
     }
 }

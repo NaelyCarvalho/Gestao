@@ -24,6 +24,13 @@ namespace WindowsFormsAppPrincipal
             }
         }
 
-        
+        private void buttonAdicionarUsuario_Click(object sender, EventArgs e)
+        {
+            using (FormCadastroUsuario frm = new FormCadastroUsuario())
+            {
+                frm.ShowDialog();
+            }
+            buttonBuscar_Click(sender, e);
+        }
     }
 }

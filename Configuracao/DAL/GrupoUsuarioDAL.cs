@@ -161,7 +161,7 @@ namespace DAL
             }
         }
 
-        public List<GrupoUsuario> BuscarTodos()
+        public List<GrupoUsuario> BuscarTodosGrupos()
         {
             SqlConnection cn = new SqlConnection();
             GrupoUsuario grupoUsuario;

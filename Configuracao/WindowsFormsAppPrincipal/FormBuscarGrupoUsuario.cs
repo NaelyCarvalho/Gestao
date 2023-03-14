@@ -17,7 +17,7 @@ namespace WindowsFormsAppPrincipal
             GrupoUsuarioBLL grupoUsuarioBLL = new GrupoUsuarioBLL();
             if (textboxgrupo.Text == "")
             {
-                //grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BFuscarTodos();
+                grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BuscarTodosGrupos();
             }
             else
             {

@@ -2,6 +2,7 @@
 using DAL;
 using System.Security.Cryptography;
 using System;
+using System.Collections.Generic;
 
 namespace BLL
 {
@@ -35,10 +36,12 @@ namespace BLL
             permissaoDAL.Excluir(_IdDescricao);
         }
 
-        public Permissao BuscarPorId(int _IdDescricao)
+        public List<Permissao> BuscarPorIDDescricao(int _IdDescricao)
         {
             PermissaoDAL permissaoDAL = new PermissaoDAL();
-            return permissaoDAL.BuscarPorId(_IdDescricao);
+            return permissaoDAL.BuscarPorIDDescricao(_IdDescricao);
         }
+
+
     }
 }

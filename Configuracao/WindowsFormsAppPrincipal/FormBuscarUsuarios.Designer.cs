@@ -78,7 +78,7 @@
             this.usuarioDataGridView.ReadOnly = true;
             this.usuarioDataGridView.RowHeadersWidth = 51;
             this.usuarioDataGridView.RowTemplate.Height = 24;
-            this.usuarioDataGridView.Size = new System.Drawing.Size(1065, 296);
+            this.usuarioDataGridView.Size = new System.Drawing.Size(1065, 347);
             this.usuarioDataGridView.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
@@ -157,7 +157,7 @@
             this.grupoUsuariosDataGridView.ReadOnly = true;
             this.grupoUsuariosDataGridView.RowHeadersWidth = 51;
             this.grupoUsuariosDataGridView.RowTemplate.Height = 24;
-            this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(279, 296);
+            this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(279, 347);
             this.grupoUsuariosDataGridView.TabIndex = 2;
             // 
             // nomeGrupoDataGridViewTextBoxColumn
@@ -213,6 +213,7 @@
             this.buttonAdicionarUsuario.TabIndex = 4;
             this.buttonAdicionarUsuario.Text = "Adicionar";
             this.buttonAdicionarUsuario.UseVisualStyleBackColor = true;
+            this.buttonAdicionarUsuario.Click += new System.EventHandler(this.buttonAdicionarUsuario_Click);
             // 
             // buttonExcluirUsuario
             // 
@@ -260,8 +261,12 @@
             this.Controls.Add(this.grupoUsuariosDataGridView);
             this.Controls.Add(this.usuarioDataGridView);
             this.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1383, 511);
             this.Name = "FormBuscarUsuarios";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "FormBuscarUsuarios";
             ((System.ComponentModel.ISupportInitialize)(this.usuarioDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();

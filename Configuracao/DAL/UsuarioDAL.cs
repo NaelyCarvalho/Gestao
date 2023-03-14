@@ -173,10 +173,6 @@ namespace DAL
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
                     }
-                    else
-                    {
-                        throw new Exception("Usuário não encontrado. ");
-                    }
                 }
                 return usuario;
             }

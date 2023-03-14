@@ -7,7 +7,7 @@ namespace BLL
 {
     public class UsuarioBLL
     {
-        private static void ValidarDados(Usuario _usuario)
+        private static void ValidarDados(Usuario _usuario,string _confirmacaoDeSenha)
         {
             //Todo: Validar se a senha é maior que 50 ou menor que 3 e se contém espaço
             if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
@@ -29,13 +29,19 @@ namespace BLL
             {
                 throw new Exception("Não é permitido números em sequência.");
             }
+
+            //Validar se as senhas são iguais
+            if (_confirmacaoDeSenha != _usuario.Senha)
+            {
+                throw new Exception("O campo senha e a confirmação de senha não são iguais");
+            }
         }
 
-        public void Inserir(Usuario _usuario)
+        public void Inserir(Usuario _usuario, string _confirmacaoDeSenha)
         {
 
             //Todo: Validar se já existe um usuário com este nome.
-            ValidarDados(_usuario);
+            ValidarDados(_usuario, _confirmacaoDeSenha);
 
             Usuario usuario = new Usuario();
             usuario = BuscarPorNomeUsuario(_usuario.NomeUsuario);
@@ -48,9 +54,9 @@ namespace BLL
             usuarioDAL.Inserir(_usuario);
         }
 
-        public void Alterar(Usuario _usuario)
+        public void Alterar(Usuario _usuario, string _confirmacaoDeSenha)
         {
-            ValidarDados(_usuario);
+            ValidarDados(_usuario, _confirmacaoDeSenha);
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Alterar(_usuario);
         }
