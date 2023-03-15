@@ -98,7 +98,7 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Permissao.IdDescricao, Permissao.Descricao from Permissao inner join PermissaoGrupoUsuario on Permissao.IdDescricao = PermissaoGrupoUsuario.Cod_GrupoUsuario where Permissao.IdDescricao = @Cod_Descricao";
+                cmd.CommandText = @"SELECT Permissao.IdDescricao, Permissao.Descricao from Permissao inner join PermissaoGrupoUsuario on Permissao.IdDescricao = PermissaoGrupoUsuario.Cod_GrupoUsuario where IdDescricao = @Cod_Descricao";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Cod_Descricao", _IdDescricao);
                 cn.Open();
@@ -108,7 +108,7 @@ namespace DAL
                     if (rd.Read())
                     {
                         permissao = new Permissao();
-                        permissao.IdDescricao = Convert.ToInt32(rd["IdDescricao"]);
+                        permissao.IdDescricao = Convert.ToInt32(rd["Cod_Descricao"]);
                         permissao.Descricao = rd["Descricao"].ToString();
 
                         permissoes.Add(permissao);

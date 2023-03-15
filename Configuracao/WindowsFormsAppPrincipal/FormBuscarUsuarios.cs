@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using BLL;
+using Models;
 
 namespace WindowsFormsAppPrincipal
 {
@@ -36,7 +37,9 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonAlterar_Click(object sender, EventArgs e)
         {
-            using (FormCadastroUsuario frm = new FormCadastroUsuario(true, 1))
+            int id = ((Usuario)usuarioBindingSource.Current).Id;
+
+            using (FormCadastroUsuario frm = new FormCadastroUsuario(true,id))
             {
                 frm.ShowDialog();
             }
