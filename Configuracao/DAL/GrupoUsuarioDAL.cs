@@ -107,12 +107,13 @@ namespace DAL
                         grupo = new GrupoUsuario();
                         grupo.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
                         grupo.NomeGrupo = rd["NomeGrupo"].ToString();
+
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao buscar grupo" +ex.Message);
+                throw new Exception("Erro ao buscar grupo" + ex.Message);
             }
             finally
             {
@@ -121,29 +122,31 @@ namespace DAL
             return grupo;
         }
 
-        public List<GrupoUsuario> BuscarPorIDUsuario(int _IdUsuario)
+        public List<GrupoUsuario> BuscarPorIDUsuario(int _idgrupoUsuario)
         {
+            List<GrupoUsuario> grupos = new List<GrupoUsuario>();
             SqlConnection cn = new SqlConnection();
             GrupoUsuario grupoUsuario;
-            List<GrupoUsuario> grupos = new List<GrupoUsuario>();
-            
+            SqlCommand cmd = new SqlCommand();
+
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT GrupoUsuario.IdGrupoUsuario, GrupoUsuario.NomeGrupo From GrupoUsuario inner join UsuarioGrupoUsuario on GrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.Cod_GrupoUsuario where UsuarioGrupoUsuario.Cod_Usuario = @Cod_Usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Cod_Usuario", _IdUsuario);
+                cmd.Parameters.AddWithValue("@Cod_Usuario", _idgrupoUsuario);
                 cn.Open();
 
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    while (rd.Read())
+                    if (rd.Read())
                     {
                         grupoUsuario = new GrupoUsuario();
                         grupoUsuario.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
                         grupoUsuario.NomeGrupo = rd["NomeGrupo"].ToString();
+                        PermissaoDAL permissaoDAL = new PermissaoDAL();
+                        grupoUsuario.Permissoes = permissaoDAL.BuscarPorIDDescricao(grupoUsuario.IdGrupoUsuario);
 
                         grupos.Add(grupoUsuario);
                     }

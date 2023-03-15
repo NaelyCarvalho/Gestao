@@ -37,7 +37,7 @@ namespace DAL
                 cn.Close();
             }
         }
-        
+
         public void Alterar(Permissao _permissao)
         {
             SqlConnection cn = new SqlConnection();
@@ -89,14 +89,14 @@ namespace DAL
 
         public List<Permissao> BuscarPorIDDescricao(int _IdDescricao)
         {
-            SqlConnection cn = new SqlConnection();
-            Permissao permissao;
             List<Permissao> permissoes = new List<Permissao>();
+            Permissao permissao = new Permissao();
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
 
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT Permissao.IdDescricao, Permissao.Descricao from Permissao inner join PermissaoGrupoUsuario on Permissao.IdDescricao = PermissaoGrupoUsuario.Cod_GrupoUsuario where Permissao.IdDescricao = @Cod_Descricao";
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -105,7 +105,7 @@ namespace DAL
 
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    while (rd.Read())
+                    if (rd.Read())
                     {
                         permissao = new Permissao();
                         permissao.IdDescricao = Convert.ToInt32(rd["IdDescricao"]);
@@ -124,9 +124,9 @@ namespace DAL
             {
                 cn.Close();
             }
+
         }
-
     }
 
-    }
+}
 

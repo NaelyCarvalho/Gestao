@@ -44,7 +44,7 @@ namespace BLL
             ValidarDados(_usuario, _confirmacaoDeSenha);
 
             Usuario usuario = new Usuario();
-            usuario = BuscarPorNomeUsuario(_usuario.NomeUsuario);
+            usuario = BuscarPorIdUsuario(_usuario.Id);
             if (usuario.NomeUsuario == _usuario.NomeUsuario)
             {
                 throw new Exception("Já existe um usuário com este nome");
@@ -73,15 +73,10 @@ namespace BLL
             return usuarioDAL.BuscarTodos();
         }
 
-        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
+        public Usuario BuscarPorIdUsuario(int _IdUsuario)
         {
-            if (String.IsNullOrEmpty(_nomeUsuario))
-            {
-                throw new Exception("Informe o nome do usuário.");
-            }
-
             UsuarioDAL usuarioDAL = new UsuarioDAL();
-            return usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
+            return usuarioDAL.BuscarPorIdUsuario(_IdUsuario);
         }
     }
 }

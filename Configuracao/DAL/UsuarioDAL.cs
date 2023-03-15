@@ -50,7 +50,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE Usuario SET Nome = @Nome, NomeUsuario = @NomeUsuario, CPF = @CPF, Email = @Email, Senha = @Senha, Ativo = @Ativo WHERE ID= @ID";
+                cmd.CommandText = @"UPDATE Usuario SET Nome = @Nome, NomeUsuario = @NomeUsuario, CPF = @CPF, Email = @Email, Senha = @Senha, Ativo = @Ativo WHERE ID= @IdUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
@@ -61,7 +61,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@IdUsuario", _usuario.Id);
 
                 cn.Open();
-                cmd.BeginExecuteNonQuery();
+                cmd.ExecuteNonQuery();
      
             }
             catch (Exception ex)
@@ -145,7 +145,7 @@ namespace DAL
             }
         }
 
-        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
+        public Usuario BuscarPorIdUsuario(int _IdUsuario)
         {
             Usuario usuario = new Usuario();
             SqlConnection cn = new SqlConnection();
@@ -156,9 +156,9 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
                 cmd.CommandText = @"Select ID, Nome, NomeUsuario, CPF, Email, Ativo
-                                   From Usuario Where NomeUsuario = @NomeUsuario";
+                                   From Usuario Where ID = @ID";
 
-                cmd.Parameters.AddWithValue("@NomeUsuario", _nomeUsuario);
+                cmd.Parameters.AddWithValue("@ID", _IdUsuario);
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
@@ -166,12 +166,14 @@ namespace DAL
                     if (rd.Read())
                     {
                         usuario = new Usuario();
-                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Id = Convert.ToInt32(rd["ID"]);
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIDUsuario(usuario.Id);
                     }
                 }
                 return usuario;
