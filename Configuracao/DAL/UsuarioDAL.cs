@@ -92,7 +92,6 @@ namespace DAL
             }
             catch (Exception ex)
             {
-
                 throw new Exception("Ocorreu um erro ao tentar excluir o usuário no banco de dados: " + ex.Message);
             }
             finally

@@ -26,5 +26,12 @@ namespace WindowsFormsAppPrincipal
 
         }
 
+        private void buttonAdicionarGrupo_Click(object sender, EventArgs e)
+        {
+            using (FormCadastroGrupoUsuario frm = new FormCadastroGrupoUsuario())
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }

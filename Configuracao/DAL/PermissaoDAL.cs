@@ -108,7 +108,7 @@ namespace DAL
                     if (rd.Read())
                     {
                         permissao = new Permissao();
-                        permissao.IdDescricao = Convert.ToInt32(rd["Cod_Descricao"]);
+                        permissao.IdDescricao = Convert.ToInt32(rd["IdDescricao"]);
                         permissao.Descricao = rd["Descricao"].ToString();
 
                         permissoes.Add(permissao);

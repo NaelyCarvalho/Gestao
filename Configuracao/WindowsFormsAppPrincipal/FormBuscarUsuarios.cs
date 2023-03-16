@@ -39,13 +39,29 @@ namespace WindowsFormsAppPrincipal
         {
             int id = ((Usuario)usuarioBindingSource.Current).Id;
 
-            using (FormCadastroUsuario frm = new FormCadastroUsuario(true,id))
+            using (FormCadastroUsuario frm = new FormCadastroUsuario(true, id))
             {
                 frm.ShowDialog();
             }
             buttonBuscar_Click(sender, e);
         }
 
+        private void buttonExcluirUsuario_Click(object sender, EventArgs e)
+        {
+            if (usuarioBindingSource.Count <= 0)
+            {
+                MessageBox.Show("Não existe registro para ser excluído.");
+                return;
+            }
 
+            if (MessageBox.Show("Deseja realmente excluir este registro? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+         
+            int id = ((Usuario)usuarioBindingSource.Current).Id;
+            new UsuarioBLL().Excluir(id);
+
+            MessageBox.Show("Registro excluído com sucesso!");
+            buttonBuscar_Click(null, null);
+        }
     }
 }

@@ -68,6 +68,7 @@
             this.grupoUsuariosDataGridView.ReadOnly = true;
             this.grupoUsuariosDataGridView.RowHeadersWidth = 51;
             this.grupoUsuariosDataGridView.RowTemplate.Height = 24;
+            this.grupoUsuariosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(517, 358);
             this.grupoUsuariosDataGridView.TabIndex = 1;
             // 
@@ -132,6 +133,7 @@
             this.buttonAdicionarGrupo.TabIndex = 7;
             this.buttonAdicionarGrupo.Text = "Adicionar";
             this.buttonAdicionarGrupo.UseVisualStyleBackColor = true;
+            this.buttonAdicionarGrupo.Click += new System.EventHandler(this.buttonAdicionarGrupo_Click);
             // 
             // buttonAlterarGrupo
             // 
@@ -163,6 +165,7 @@
             this.permissoesDataGridView.ReadOnly = true;
             this.permissoesDataGridView.RowHeadersWidth = 51;
             this.permissoesDataGridView.RowTemplate.Height = 24;
+            this.permissoesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.permissoesDataGridView.Size = new System.Drawing.Size(811, 358);
             this.permissoesDataGridView.TabIndex = 8;
             // 

@@ -78,6 +78,7 @@
             this.usuarioDataGridView.ReadOnly = true;
             this.usuarioDataGridView.RowHeadersWidth = 51;
             this.usuarioDataGridView.RowTemplate.Height = 24;
+            this.usuarioDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.usuarioDataGridView.Size = new System.Drawing.Size(1065, 347);
             this.usuarioDataGridView.TabIndex = 1;
             // 
@@ -157,6 +158,7 @@
             this.grupoUsuariosDataGridView.ReadOnly = true;
             this.grupoUsuariosDataGridView.RowHeadersWidth = 51;
             this.grupoUsuariosDataGridView.RowTemplate.Height = 24;
+            this.grupoUsuariosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(279, 347);
             this.grupoUsuariosDataGridView.TabIndex = 2;
             // 
@@ -225,6 +227,7 @@
             this.buttonExcluirUsuario.TabIndex = 4;
             this.buttonExcluirUsuario.Text = "Excluir";
             this.buttonExcluirUsuario.UseVisualStyleBackColor = true;
+            this.buttonExcluirUsuario.Click += new System.EventHandler(this.buttonExcluirUsuario_Click);
             // 
             // buttonAdicionarGrupoUsuario
             // 
