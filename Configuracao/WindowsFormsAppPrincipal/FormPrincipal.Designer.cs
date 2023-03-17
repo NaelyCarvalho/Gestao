@@ -51,7 +51,7 @@
             this.cadastroToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1140, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1140, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,41 +64,42 @@
             this.permissõesDeGruposDeUsuáriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
             this.fornecedoresToolStripMenuItem});
+            this.cadastroToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(124, 32);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
             // 
             // usuáriosToolStripMenuItem
             // 
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
             // 
             // gruposDeUsuáriosToolStripMenuItem
             // 
             this.gruposDeUsuáriosToolStripMenuItem.Name = "gruposDeUsuáriosToolStripMenuItem";
-            this.gruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.gruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
             this.gruposDeUsuáriosToolStripMenuItem.Text = "Grupos de usuários";
             this.gruposDeUsuáriosToolStripMenuItem.Click += new System.EventHandler(this.gruposDeUsuáriosToolStripMenuItem_Click);
             // 
             // permissõesDeGruposDeUsuáriosToolStripMenuItem
             // 
             this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Name = "permissõesDeGruposDeUsuáriosToolStripMenuItem";
-            this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
             this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Text = "Permissões de Grupos de Usuários";
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // fornecedoresToolStripMenuItem
             // 
             this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
-            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
             this.fornecedoresToolStripMenuItem.Text = "Fornecedores";
             // 
             // grupoUsuarioBindingSource
@@ -118,6 +119,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormPrincipal";
+            this.ShowIcon = false;
             this.Text = "Gestão";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

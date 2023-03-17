@@ -238,6 +238,7 @@
             this.buttonAdicionarGrupoUsuario.TabIndex = 4;
             this.buttonAdicionarGrupoUsuario.Text = "Adicionar";
             this.buttonAdicionarGrupoUsuario.UseVisualStyleBackColor = true;
+            this.buttonAdicionarGrupoUsuario.Click += new System.EventHandler(this.buttonAdicionarGrupoUsuario_Click);
             // 
             // buttonExcluirGrupoUsuario
             // 

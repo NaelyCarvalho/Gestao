@@ -32,9 +32,9 @@
             System.Windows.Forms.Label nomeGrupoLabel;
             this.label1 = new System.Windows.Forms.Label();
             this.nomeGrupoTextBox = new System.Windows.Forms.TextBox();
+            this.grupoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cancelargrupo = new System.Windows.Forms.Button();
             this.salvargrupo = new System.Windows.Forms.Button();
-            this.grupoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             nomeGrupoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuarioBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +72,10 @@
             this.nomeGrupoTextBox.Size = new System.Drawing.Size(252, 28);
             this.nomeGrupoTextBox.TabIndex = 5;
             // 
+            // grupoUsuarioBindingSource
+            // 
+            this.grupoUsuarioBindingSource.DataSource = typeof(Models.GrupoUsuario);
+            // 
             // cancelargrupo
             // 
             this.cancelargrupo.Location = new System.Drawing.Point(376, 147);
@@ -92,10 +96,6 @@
             this.salvargrupo.UseVisualStyleBackColor = true;
             this.salvargrupo.Click += new System.EventHandler(this.salvargrupo_Click);
             // 
-            // grupoUsuarioBindingSource
-            // 
-            this.grupoUsuarioBindingSource.DataSource = typeof(Models.GrupoUsuario);
-            // 
             // FormCadastroGrupoUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -110,6 +110,8 @@
             this.MaximumSize = new System.Drawing.Size(552, 261);
             this.MinimumSize = new System.Drawing.Size(552, 261);
             this.Name = "FormCadastroGrupoUsuario";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroGrupoUsuario";
             this.Load += new System.EventHandler(this.FormCadastroGrupoUsuario_Load);

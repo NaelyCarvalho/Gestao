@@ -63,5 +63,16 @@ namespace WindowsFormsAppPrincipal
             MessageBox.Show("Registro excluído com sucesso!");
             buttonBuscar_Click(null, null);
         }
+
+        private void buttonAdicionarGrupoUsuario_Click(object sender, EventArgs e)
+        {
+            using (FormConsultarGrupoUsuario frm = new FormConsultarGrupoUsuario())
+            {
+                frm.ShowDialog();
+                UsuarioBLL usuarioBLL = new UsuarioBLL();
+                int Id = ((Usuario)usuarioBindingSource.Current).Id;
+                usuarioBLL.AdicionarGrupo(Id, frm.Id);
+            }
+        }
     }
 }

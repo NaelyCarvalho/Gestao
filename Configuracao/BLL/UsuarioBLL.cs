@@ -7,7 +7,7 @@ namespace BLL
 {
     public class UsuarioBLL
     {
-        private static void ValidarDados(Usuario _usuario,string _confirmacaoDeSenha)
+        private static void ValidarDados(Usuario _usuario, string _confirmacaoDeSenha)
         {
             //Todo: Validar se a senha é maior que 50 ou menor que 3 e se contém espaço
             if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
@@ -77,6 +77,16 @@ namespace BLL
         {
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             return usuarioDAL.BuscarPorIdUsuario(_IdUsuario);
+        }
+
+        public void AdicionarGrupo(int _Id, int _IdGrupoUsuario)
+        {
+            if (new UsuarioDAL().ExisteRelacionamento(_Id, _IdGrupoUsuario))
+
+                return;
+
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            usuarioDAL.AdicionarGrupo(_Id, _IdGrupoUsuario);
         }
     }
 }

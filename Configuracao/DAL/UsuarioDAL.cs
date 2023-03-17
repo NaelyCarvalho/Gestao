@@ -62,7 +62,7 @@ namespace DAL
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
-     
+
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"DELETE FROM Usuario WHERE ID = @ID";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Id",_id);
+                cmd.Parameters.AddWithValue("@Id", _id);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -115,7 +115,7 @@ namespace DAL
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
 
-                using(SqlDataReader rd = cmd.ExecuteReader())
+                using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {
@@ -136,7 +136,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                throw new Exception ("Ocorreu um erro ao tentar buscar todos os usuários: " + ex.Message);
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuários: " + ex.Message);
             }
             finally
             {
@@ -187,6 +187,68 @@ namespace DAL
             }
         }
 
+        public void AdicionarGrupo(int id, int idGrupoUsuario)
+        {
+            SqlConnection cn = new SqlConnection();
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"INSERT INTO UsuarioGrupoUsuario(Cod_Usuario, Cod_GrupoUsuario) VALUES (@Cod_Usuario, @Cod_GrupoUsuario)";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Cod_Usuario", id);
+                cmd.Parameters.AddWithValue("@Cod_GrupoUsuario", idGrupoUsuario);
+
+                cn.Open();
+                cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar inserir um grupo no banco: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public bool ExisteRelacionamento(int id, int idGrupoUsuario)
+        {
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            Usuario usuario = new Usuario();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT 1 AS Retorno From UsuarioGrupoUsuario where Cod_Usuario = @Cod_Usuario and Cod_GrupoUsuario = @Cod_GrupoUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Cod_Usuario", id);
+                cmd.Parameters.AddWithValue("@Cod_GrupoUsuario", idGrupoUsuario);
+
+                cn.Open();
+
+                using(SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar inserir um grupo no banco: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
     }
 }
+
 
