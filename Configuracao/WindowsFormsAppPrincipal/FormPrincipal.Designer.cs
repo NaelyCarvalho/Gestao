@@ -34,8 +34,6 @@
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gruposDeUsuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permissõesDeGruposDeUsuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
@@ -61,9 +59,7 @@
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuáriosToolStripMenuItem,
             this.gruposDeUsuáriosToolStripMenuItem,
-            this.permissõesDeGruposDeUsuáriosToolStripMenuItem,
-            this.clientesToolStripMenuItem,
-            this.fornecedoresToolStripMenuItem});
+            this.permissõesDeGruposDeUsuáriosToolStripMenuItem});
             this.cadastroToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -89,18 +85,6 @@
             this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Name = "permissõesDeGruposDeUsuáriosToolStripMenuItem";
             this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
             this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Text = "Permissões de Grupos de Usuários";
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            // 
-            // fornecedoresToolStripMenuItem
-            // 
-            this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
-            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
-            this.fornecedoresToolStripMenuItem.Text = "Fornecedores";
             // 
             // grupoUsuarioBindingSource
             // 
@@ -139,8 +123,6 @@
         private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gruposDeUsuáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem permissõesDeGruposDeUsuáriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
     }
 }
 
