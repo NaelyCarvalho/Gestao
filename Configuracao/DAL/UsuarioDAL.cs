@@ -230,7 +230,7 @@ namespace DAL
 
                 cn.Open();
 
-                using(SqlDataReader rd = cmd.ExecuteReader())
+                using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {
@@ -247,6 +247,44 @@ namespace DAL
             {
                 cn.Close();
             }
+        }
+
+        public bool ValidarPermissao(int _IdUsuario, int _IdDescricao)
+        {
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT TOP 1 1 AS Resultado FROM UsuarioGrupoUsuario
+                                    INNER JOIN PermissaoGrupoUsuario 
+                                    ON UsuarioGrupoUsuario.Cod_GrupoUsuario = PermissaoGrupoUsuario.Cod_GrupoUsuario
+                                    WHERE UsuarioGrupoUsuario.Cod_Usuario = @Cod_Usuario
+                                    AND PermissaoGrupoUsuario.Cod_Descricao = @Cod_Descricao";
+
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Cod_Usuario", _IdUsuario);
+                cmd.Parameters.AddWithValue("@Cod_Descricao", _IdDescricao);
+                
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                        return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar validar permissão do usuário: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+
         }
     }
 }

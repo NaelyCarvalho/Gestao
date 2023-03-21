@@ -39,7 +39,7 @@ namespace BLL
 
         public void Inserir(Usuario _usuario, string _confirmacaoDeSenha)
         {
-
+            ValidarPermissao(2);
             //Todo: Validar se já existe um usuário com este nome.
             ValidarDados(_usuario, _confirmacaoDeSenha);
 
@@ -56,6 +56,7 @@ namespace BLL
 
         public void Alterar(Usuario _usuario, string _confirmacaoDeSenha)
         {
+            ValidarPermissao(3);
             ValidarDados(_usuario, _confirmacaoDeSenha);
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Alterar(_usuario);
@@ -63,30 +64,40 @@ namespace BLL
 
         public void Excluir(int _id)
         {
+            ValidarPermissao(4);
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Excluir(_id);
         }
 
         public List<Usuario> BuscarTodos()
         {
+            ValidarPermissao(1);
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             return usuarioDAL.BuscarTodos();
         }
 
         public Usuario BuscarPorIdUsuario(int _IdUsuario)
         {
+            ValidarPermissao(1);
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             return usuarioDAL.BuscarPorIdUsuario(_IdUsuario);
         }
 
         public void AdicionarGrupo(int _Id, int _IdGrupoUsuario)
         {
+            ValidarPermissao(10);
             if (new UsuarioDAL().ExisteRelacionamento(_Id, _IdGrupoUsuario))
 
                 return;
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.AdicionarGrupo(_Id, _IdGrupoUsuario);
+        }
+
+        public void ValidarPermissao(int _IdDescricao)
+        {
+            if (!new UsuarioDAL().ValidarPermissao(Constantes.IdUsuarioLogado, _IdDescricao))
+                throw new Exception("Você não tem permissão para executar esta operação.");
         }
     }
 }
