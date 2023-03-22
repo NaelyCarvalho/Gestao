@@ -33,7 +33,6 @@
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gruposDeUsuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.permissõesDeGruposDeUsuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
@@ -58,8 +57,7 @@
             this.cadastroToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuáriosToolStripMenuItem,
-            this.gruposDeUsuáriosToolStripMenuItem,
-            this.permissõesDeGruposDeUsuáriosToolStripMenuItem});
+            this.gruposDeUsuáriosToolStripMenuItem});
             this.cadastroToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -69,22 +67,16 @@
             // usuáriosToolStripMenuItem
             // 
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(266, 32);
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
             // 
             // gruposDeUsuáriosToolStripMenuItem
             // 
             this.gruposDeUsuáriosToolStripMenuItem.Name = "gruposDeUsuáriosToolStripMenuItem";
-            this.gruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
+            this.gruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(266, 32);
             this.gruposDeUsuáriosToolStripMenuItem.Text = "Grupos de usuários";
             this.gruposDeUsuáriosToolStripMenuItem.Click += new System.EventHandler(this.gruposDeUsuáriosToolStripMenuItem_Click);
-            // 
-            // permissõesDeGruposDeUsuáriosToolStripMenuItem
-            // 
-            this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Name = "permissõesDeGruposDeUsuáriosToolStripMenuItem";
-            this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(396, 32);
-            this.permissõesDeGruposDeUsuáriosToolStripMenuItem.Text = "Permissões de Grupos de Usuários";
             // 
             // grupoUsuarioBindingSource
             // 
@@ -122,7 +114,6 @@
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gruposDeUsuáriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem permissõesDeGruposDeUsuáriosToolStripMenuItem;
     }
 }
 

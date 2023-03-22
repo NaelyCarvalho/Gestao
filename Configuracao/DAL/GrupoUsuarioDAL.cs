@@ -69,7 +69,8 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"delete from GrupoUsuario where IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandText = @"DELETE FROM PermissaoGrupoUsuario where Cod_GrupoUsuario = @IdGrupoUsuario
+                                    delete from GrupoUsuario where IdGrupoUsuario = @IdGrupoUsuario";
 
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdGrupoUsuario", _IdGrupoUsuario);
@@ -140,7 +141,7 @@ namespace DAL
 
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    if (rd.Read())
+                    while (rd.Read())
                     {
                         grupoUsuario = new GrupoUsuario();
                         grupoUsuario.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
