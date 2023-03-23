@@ -15,54 +15,111 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonBuscarGrupo_Click_1(object sender, EventArgs e)
         {
-            GrupoUsuarioBLL grupoUsuarioBLL = new GrupoUsuarioBLL();
-            if (textboxgrupo.Text == "")
+            try
             {
-                grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BuscarTodosGrupos();
+                GrupoUsuarioBLL grupoUsuarioBLL = new GrupoUsuarioBLL();
+                if (textboxgrupo.Text == "")
+                {
+                    grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BuscarTodosGrupos();
+                }
+                else
+                {
+                    grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BuscarPorID(Convert.ToInt32(textboxgrupo.Text));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                grupoUsuariosBindingSource.DataSource = grupoUsuarioBLL.BuscarPorID(Convert.ToInt32(textboxgrupo.Text));
+                MessageBox.Show(ex.Message);
             }
+           
 
         }
 
         private void buttonAdicionarGrupo_Click(object sender, EventArgs e)
         {
-            using (FormCadastroGrupoUsuario frm = new FormCadastroGrupoUsuario())
+            try
             {
-                frm.ShowDialog();
+                using (FormCadastroGrupoUsuario frm = new FormCadastroGrupoUsuario())
+                {
+                    frm.ShowDialog();
+                }
+                buttonBuscarGrupo_Click_1(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);    
             }
         }
 
         private void buttonAlterarGrupo_Click(object sender, EventArgs e)
         {
-            int IdGrupo = ((GrupoUsuario)grupoUsuariosBindingSource.Current).IdGrupoUsuario;
-
-            using (FormCadastroGrupoUsuario frm = new FormCadastroGrupoUsuario(true, IdGrupo))
+            try
             {
-                frm.ShowDialog();
-            }
+                int IdGrupo = ((GrupoUsuario)grupoUsuariosBindingSource.Current).IdGrupoUsuario;
 
-            buttonBuscarGrupo_Click_1(sender, e);
+                using (FormCadastroGrupoUsuario frm = new FormCadastroGrupoUsuario(true, IdGrupo))
+                {
+                    frm.ShowDialog();
+                }
+                buttonBuscarGrupo_Click_1(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void buttonExcluirGrupo_Click(object sender, EventArgs e)
         {
-            if (grupoUsuariosBindingSource.Count <= 0)
+            try
             {
-                MessageBox.Show("Não existe registro para ser excluído.");
-                return;
+                if (grupoUsuariosBindingSource.Count <= 0)
+                {
+                    MessageBox.Show("Não existe registro para ser excluído.");
+                    return;
+                }
+
+                if (MessageBox.Show("Deseja realmente excluir este registro? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+
+                int Idgrupo = ((GrupoUsuario)grupoUsuariosBindingSource.Current).IdGrupoUsuario;
+                new GrupoUsuarioBLL().Excluir(Idgrupo);
+
+                MessageBox.Show("Registro excluído com sucesso!");
+                buttonBuscarGrupo_Click_1(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
+        private void AdicionarPermissao_Click(object sender, EventArgs e)
+        {
+            using(FormConsultarPermissao frm = new FormConsultarPermissao())
+            {
+                try
+                {
+                    frm.ShowDialog();
+                    if (frm.Id == 0)
+                    {
+                        return;
+                    }
+                    {
+                        PermissaoBLL permissaoBLL = new PermissaoBLL();
+                        int IdGrupoUsuario = ((GrupoUsuario)grupoUsuariosBindingSource.Current).IdGrupoUsuario;
+                        permissaoBLL.Inserir(frm.Id, IdGrupoUsuario);
+                        MessageBox.Show("Registo Inserido com Sucesso!");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erro ao adicionar registro!");
+                }
             }
 
-            if (MessageBox.Show("Deseja realmente excluir este registro? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
-
-            int Idgrupo = ((GrupoUsuario)grupoUsuariosBindingSource.Current).IdGrupoUsuario;
-            new GrupoUsuarioBLL().Excluir(Idgrupo);
-
-            MessageBox.Show("Registro excluído com sucesso!");
-            buttonBuscarGrupo_Click_1(null, null);
         }
+
     }
 }

@@ -70,7 +70,8 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandText = @"DELETE FROM PermissaoGrupoUsuario where Cod_GrupoUsuario = @IdGrupoUsuario
-                                    delete from GrupoUsuario where IdGrupoUsuario = @IdGrupoUsuario";
+                                    DELETE FROM UsuarioGrupoUsuario where Cod_GrupoUsuario = @IdGrupoUsuario
+                                    DELETE FROM GrupoUsuario where IdGrupoUsuario = @IdGrupoUsuario";
 
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@IdGrupoUsuario", _IdGrupoUsuario);

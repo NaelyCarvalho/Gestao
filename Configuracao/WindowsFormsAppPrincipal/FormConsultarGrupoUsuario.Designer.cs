@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.grupoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonSelecionar = new System.Windows.Forms.Button();
-            this.buttonCancelar = new System.Windows.Forms.Button();
+            this.buttonCancelargrupo = new System.Windows.Forms.Button();
             this.grupoUsuarioDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBuscargrupo = new System.Windows.Forms.TextBox();
@@ -56,16 +56,16 @@
             this.buttonSelecionar.UseVisualStyleBackColor = true;
             this.buttonSelecionar.Click += new System.EventHandler(this.buttonSelecionar_Click);
             // 
-            // buttonCancelar
+            // buttonCancelargrupo
             // 
-            this.buttonCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancelar.Location = new System.Drawing.Point(611, 398);
-            this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(75, 35);
-            this.buttonCancelar.TabIndex = 0;
-            this.buttonCancelar.Text = "Cancelar";
-            this.buttonCancelar.UseVisualStyleBackColor = true;
-            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            this.buttonCancelargrupo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancelargrupo.Location = new System.Drawing.Point(611, 398);
+            this.buttonCancelargrupo.Name = "buttonCancelargrupo";
+            this.buttonCancelargrupo.Size = new System.Drawing.Size(75, 35);
+            this.buttonCancelargrupo.TabIndex = 0;
+            this.buttonCancelargrupo.Text = "Cancelar";
+            this.buttonCancelargrupo.UseVisualStyleBackColor = true;
+            this.buttonCancelargrupo.Click += new System.EventHandler(this.buttonCancelargrupo_Click_1);
             // 
             // grupoUsuarioDataGridView
             // 
@@ -125,9 +125,9 @@
             // 
             this.consultarGrupo.AutoSize = true;
             this.consultarGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.consultarGrupo.Location = new System.Drawing.Point(117, 0);
+            this.consultarGrupo.Location = new System.Drawing.Point(110, 9);
             this.consultarGrupo.Name = "consultarGrupo";
-            this.consultarGrupo.Size = new System.Drawing.Size(471, 39);
+            this.consultarGrupo.Size = new System.Drawing.Size(454, 38);
             this.consultarGrupo.TabIndex = 4;
             this.consultarGrupo.Text = "Consultar grupo de usuários";
             this.consultarGrupo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -142,7 +142,7 @@
             this.Controls.Add(this.consultarGrupo);
             this.Controls.Add(this.textBuscargrupo);
             this.Controls.Add(this.grupoUsuarioDataGridView);
-            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.buttonCancelargrupo);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.buttonSelecionar);
             this.MaximizeBox = false;
@@ -163,7 +163,7 @@
 
         private System.Windows.Forms.BindingSource grupoUsuarioBindingSource;
         private System.Windows.Forms.Button buttonSelecionar;
-        private System.Windows.Forms.Button buttonCancelar;
+        private System.Windows.Forms.Button buttonCancelargrupo;
         private System.Windows.Forms.DataGridView grupoUsuarioDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.TextBox textBuscargrupo;

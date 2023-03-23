@@ -9,7 +9,7 @@ namespace DAL
 {
     public class PermissaoDAL
     {
-        public void Inserir(Permissao _permissao)
+        public void Inserir(int _idPermisao, int _idGrupoUsuario)
         {
             SqlConnection cn = new SqlConnection();
 
@@ -18,11 +18,12 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"Insert into Permissao(Descricao)
-                                  Values(@Descricao)";
+                cmd.CommandText = @"Insert into PermissaoGrupoUsuario(Cod_Descricao, Cod_Usuario)
+                                  Values(@Cod_Descricao, @Cod_Usuario)";
 
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Descricao", _permissao.Descricao);
+                cmd.Parameters.AddWithValue("@Cod_Descricao", _idPermisao);
+                cmd.Parameters.AddWithValue("@Cod_Usuario", _idGrupoUsuario);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -125,6 +126,42 @@ namespace DAL
                 cn.Close();
             }
 
+        }
+
+        public bool ExisteRelacionamento(int idPermissao, int id)
+        {
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"Select 1 as Retorno From PermissaoGrupoUsuario where IdDescricao = @IdDescricao and IdGrupoUsuario = IdGrupoUsuario";
+
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdDescricao", idPermissao);
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", id);
+
+                cn.Open();
+
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar buscar todos as permissões: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
     }
 

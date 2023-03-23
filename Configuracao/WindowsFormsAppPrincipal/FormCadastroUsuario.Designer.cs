@@ -36,7 +36,7 @@
             System.Windows.Forms.Label cPFLabel;
             System.Windows.Forms.Label ativoLabel;
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.buttonCancelar = new System.Windows.Forms.Button();
+            this.buttonCancelar2 = new System.Windows.Forms.Button();
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.nomeUsuarioTextBox = new System.Windows.Forms.TextBox();
@@ -120,15 +120,15 @@
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
-            // buttonCancelar
+            // buttonCancelar2
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(490, 400);
-            this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(75, 32);
-            this.buttonCancelar.TabIndex = 0;
-            this.buttonCancelar.Text = "Cancelar";
-            this.buttonCancelar.UseVisualStyleBackColor = true;
-            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            this.buttonCancelar2.Location = new System.Drawing.Point(490, 400);
+            this.buttonCancelar2.Name = "buttonCancelar2";
+            this.buttonCancelar2.Size = new System.Drawing.Size(75, 32);
+            this.buttonCancelar2.TabIndex = 0;
+            this.buttonCancelar2.Text = "Cancelar";
+            this.buttonCancelar2.UseVisualStyleBackColor = true;
+            this.buttonCancelar2.Click += new System.EventHandler(this.buttonCancelar2_Click_1);
             // 
             // usuarioBindingSource
             // 
@@ -235,7 +235,7 @@
             this.Controls.Add(this.nomeUsuarioTextBox);
             this.Controls.Add(NomeLabel);
             this.Controls.Add(this.nomeTextBox);
-            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.buttonCancelar2);
             this.Controls.Add(this.buttonSalvar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(726, 504);
@@ -256,7 +256,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonSalvar;
-        private System.Windows.Forms.Button buttonCancelar;
+        private System.Windows.Forms.Button buttonCancelar2;
         private System.Windows.Forms.BindingSource usuarioBindingSource;
         private System.Windows.Forms.TextBox nomeTextBox;
         private System.Windows.Forms.TextBox nomeUsuarioTextBox;

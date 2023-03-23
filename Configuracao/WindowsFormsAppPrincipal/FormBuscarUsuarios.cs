@@ -48,20 +48,28 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonExcluirUsuario_Click(object sender, EventArgs e)
         {
-            if (usuarioBindingSource.Count <= 0)
+            try
             {
-                MessageBox.Show("Não existe registro para ser excluído.");
-                return;
+                if (usuarioBindingSource.Count <= 0)
+                {
+                    MessageBox.Show("Não existe registro para ser excluído.");
+                    return;
+                }
+
+                if (MessageBox.Show("Deseja realmente excluir este registro? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+
+                int id = ((Usuario)usuarioBindingSource.Current).Id;
+                new UsuarioBLL().Excluir(id);
+
+                MessageBox.Show("Registro excluído com sucesso!");
+                buttonBuscar_Click(null, null);
             }
-
-            if (MessageBox.Show("Deseja realmente excluir este registro? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
          
-            int id = ((Usuario)usuarioBindingSource.Current).Id;
-            new UsuarioBLL().Excluir(id);
-
-            MessageBox.Show("Registro excluído com sucesso!");
-            buttonBuscar_Click(null, null);
         }
 
         private void buttonAdicionarGrupoUsuario_Click(object sender, EventArgs e)
@@ -72,7 +80,29 @@ namespace WindowsFormsAppPrincipal
                 UsuarioBLL usuarioBLL = new UsuarioBLL();
                 int Id = ((Usuario)usuarioBindingSource.Current).Id;
                 usuarioBLL.AdicionarGrupo(Id, frm.Id);
+
+                MessageBox.Show("Grupo Adicionado com sucesso!");
+                buttonBuscar_Click(null, null);
             }
         }
+
+        private void buttonExcluirGrupoUsuario_Click(object sender, EventArgs e)
+        {
+            if (usuarioBindingSource.Count <= 0)
+            {
+                MessageBox.Show("Não existe registro para ser excluído.");
+                return;
+            }
+            if (MessageBox.Show("Deseja realmente excluir este registro? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            int _IdGrupoUsuario = ((GrupoUsuario)grupoUsuariosBindingSource.Current).IdGrupoUsuario;
+            new GrupoUsuarioBLL().Excluir(_IdGrupoUsuario);
+
+            MessageBox.Show("Registro excluído com sucesso!");
+            buttonBuscar_Click(null, null);
+        }
     }
+
 }
+

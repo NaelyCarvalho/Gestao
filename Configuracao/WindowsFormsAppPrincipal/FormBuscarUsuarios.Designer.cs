@@ -249,6 +249,7 @@
             this.buttonExcluirGrupoUsuario.TabIndex = 4;
             this.buttonExcluirGrupoUsuario.Text = "Excluir";
             this.buttonExcluirGrupoUsuario.UseVisualStyleBackColor = true;
+            this.buttonExcluirGrupoUsuario.Click += new System.EventHandler(this.buttonExcluirGrupoUsuario_Click);
             // 
             // FormBuscarUsuarios
             // 

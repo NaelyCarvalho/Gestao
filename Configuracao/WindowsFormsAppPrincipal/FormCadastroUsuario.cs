@@ -20,11 +20,6 @@ namespace WindowsFormsAppPrincipal
             }
         }
 
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
             UsuarioBLL usuarioBLL = new UsuarioBLL();
@@ -56,6 +51,11 @@ namespace WindowsFormsAppPrincipal
                 usuarioBindingSource.AddNew();
             }
             
+        }
+
+        private void buttonCancelar2_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
